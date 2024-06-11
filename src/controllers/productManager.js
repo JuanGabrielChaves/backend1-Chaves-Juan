@@ -39,9 +39,7 @@ class ProductManager {
             if (arrayProductos.length > 0) {
                 ProductManager.ultId = arrayProductos.reduce((maxId, product) => Math.max(maxId, product.id), 0);
             }
-
             newProduct.id = ++ProductManager.ultId;
-
             arrayProductos.push(newProduct);
             await this.guardarArchivo(arrayProductos);
         } catch (error) {
@@ -68,7 +66,7 @@ class ProductManager {
                 console.log("Producto no encontrado");
                 return null;
             } else {
-                console.log("Producto encontrado");
+                console.log("Producto encontrado" + buscado);
                 return buscado;
             }
         } catch (error) {
@@ -100,7 +98,6 @@ class ProductManager {
     async updateProduct(id, productoActualizado) {
         try {
             const arrayProductos = await this.leerArchivo();
-
             const index = arrayProductos.findIndex((item) => item.id === id);
 
             if (index !== -1) {
@@ -119,13 +116,12 @@ class ProductManager {
     async deleteProduct(id) {
         try {
             const arrayProductos = await this.leerArchivo();
-
             const index = arrayProductos.findIndex((item) => item.id === id);
 
             if (index !== -1) {
                 arrayProductos.splice(index, 1);
                 await this.guardarArchivo(arrayProductos);
-                console.log("Producto eliminado");
+                console.log("Producto eliminado exitosamente");
             } else {
                 console.log("No se encontró el producto");
             }

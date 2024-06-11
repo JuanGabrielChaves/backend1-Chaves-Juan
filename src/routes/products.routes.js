@@ -1,9 +1,9 @@
 /** @format */
 
 import express from "express";
-const router = express.Router();
-
 import ProductManager from "../controllers/productManager.js";
+
+const router = express.Router();
 const productManager = new ProductManager("./src/models/products.json");
 
 router.get("/", async (req, res) => {
@@ -16,7 +16,6 @@ router.get("/", async (req, res) => {
             res.json(productos);
         }
     } catch (error) {
-        console.error("Error al obtener productos", error);
         res.status(500).json({
             error: "Error interno del servidor",
         });
@@ -33,7 +32,6 @@ router.get("/:pid", async (req, res) => {
                 error: "Producto no encontrado",
             });
         }
-
         res.json(producto);
     } catch (error) {
         console.error("Error al obtener producto", error);
