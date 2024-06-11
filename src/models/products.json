@@ -1,0 +1,122 @@
+[
+    {
+        "title": "Mantel de Tusor de 3 x 3",
+        "description": "Mantel de Tusor color gris perla, de 3 x 3 mts",
+        "price": "35000",
+        "img": "Sin Imagen",
+        "code": "m1",
+        "stock": "150",
+        "category": "Manteleria",
+        "status": true,
+        "thumbnails": [],
+        "id": 1
+    },
+    {
+        "title": "Repasador de Algodón",
+        "description": "Repasador de algodón blanco, absorbente y resistente",
+        "price": "1200",
+        "img": "Sin Imagen",
+        "code": "r1",
+        "stock": "300",
+        "category": "Repasadores",
+        "status": true,
+        "thumbnails": [],
+        "id": 2
+    },
+    {
+        "title": "Servilleta de Tela Blanca",
+        "description": "Servilleta de tela blanca, suave y elegante",
+        "price": "800",
+        "img": "Sin Imagen",
+        "code": "s1",
+        "stock": "500",
+        "category": "Servilletas",
+        "status": true,
+        "thumbnails": [],
+        "id": 3
+    },
+    {
+        "title": "Camino de Mesa Bordado",
+        "description": "Camino de mesa bordado a mano, diseño floral",
+        "price": "10500",
+        "img": "Sin Imagen",
+        "code": "c1",
+        "stock": "100",
+        "category": "Caminos de Mesa",
+        "status": true,
+        "thumbnails": [],
+        "id": 4
+    },
+    {
+        "title": "Mantel de Tusor de 2 x 2",
+        "description": "Mantel de Tusor color blanco tiza, de 2 x 2 mts",
+        "price": "35000",
+        "img": "Sin Imagen",
+        "code": "m2",
+        "stock": "50",
+        "category": "Manteleria",
+        "status": true,
+        "thumbnails": [],
+        "id": 5
+    },
+    {
+        "title": "Repasador cuadrille",
+        "description": "Repasador cuadrille",
+        "price": "5900",
+        "img": "Sin Imagen",
+        "code": "r1",
+        "stock": "300",
+        "category": "Repasadores",
+        "status": true,
+        "thumbnails": [],
+        "id": 6
+    },
+    {
+        "title": "Pack de Servilletas de Tela Blanca",
+        "description": "Pack por 3 Servilleta de tela blanca, suave y elegante",
+        "price": "20000",
+        "img": "Sin Imagen",
+        "code": "sx3",
+        "stock": "100",
+        "category": "Servilletas",
+        "status": true,
+        "thumbnails": [],
+        "id": 7
+    },
+    {
+        "title": "Camino de Mesa estampado",
+        "description": "Camino de mesa estampado a mano",
+        "price": "36000",
+        "img": "Sin Imagen",
+        "code": "c12a",
+        "stock": "150",
+        "category": "Caminos de Mesa",
+        "status": true,
+        "thumbnails": [],
+        "id": 8
+    },
+    {
+        "title": "Servilleta de Tela color Gris",
+        "description": "Servilleta de tela Gris, suave y elegante",
+        "price": "800",
+        "img": "Sin Imagen",
+        "code": "sg1",
+        "stock": "30",
+        "category": "Servilletas",
+        "status": true,
+        "thumbnails": [],
+        "id": 9
+    },
+    {
+        "title": "Camino de gasa ",
+        "description": "Camino de mesa de gasa",
+        "price": "17500",
+        "img": "Sin Imagen",
+        "code": "cg10",
+        "stock": "60",
+        "category": "Caminos de Mesa",
+        "status": true,
+        "thumbnails": [],
+        "id": 10
+    }
+]

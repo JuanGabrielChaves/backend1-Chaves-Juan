@@ -1,0 +1,17 @@
+{
+    "name": "backend1-chaves-juan-gabriel",
+    "version": "1.0.0",
+    "description": "Entrega del Proyecto para el curso de Backend I de CoderHouse",
+    "main": "src/app.js",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "node --watch src/app.js "
+    },
+    "author": "Juan Gabriel Chaves",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.19.2",
+        "express-routemap": "^1.6.0"
+    }
+}
