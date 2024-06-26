@@ -7,7 +7,6 @@ class CartManager {
         this.carts = [];
         this.path = path;
         this.ultId = 0;
-
         this.cargarCarritos();
     }
 
@@ -36,7 +35,6 @@ class CartManager {
         };
 
         this.carts.push(nuevoCarrito);
-
         await this.guardarCarritos();
         return nuevoCarrito;
     }
@@ -44,11 +42,9 @@ class CartManager {
     async getCarritoById(cartId) {
         try {
             const carrito = this.carts.find((c) => c.id === cartId);
-
             if (!carrito) {
                 throw new Error(`No existe un carrito con el id ${cartId}`);
             }
-
             return carrito;
         } catch (error) {
             console.error("Error al obtener el carrito por ID", error);
@@ -65,7 +61,6 @@ class CartManager {
         } else {
             carrito.products.push({ product: productId, quantity });
         }
-
         await this.guardarCarritos();
         return carrito;
     }
