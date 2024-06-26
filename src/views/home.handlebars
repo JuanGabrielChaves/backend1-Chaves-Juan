@@ -1,1 +1,11 @@
 <h1>Todos los productos</h1>
+
+<div class="productsContainer">
+    {{#each products}}
+        <div>
+            <p><strong>{{this.title}}</strong></p>
+            <p>{{this.description}}</p>
+            <p><strong>$ {{this.price}}</strong></p>
+        </div>
+    {{/each}}
+</div>

@@ -2,5 +2,18 @@
 
 h1 {
     text-align: center;
-    color: red;
+}
+
+.productsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productsContainer div {
+    border: 1px solid;
+    padding: 5px;
+    margin: 1rem;
+    width: 200px;
+    height: 200px;
 }
