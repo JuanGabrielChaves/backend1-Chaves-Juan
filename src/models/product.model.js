@@ -1,6 +1,7 @@
 /** @format */
 
 import mongoose from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
 
 // Defino el Schema: campo y tipo de dato
 
@@ -40,6 +41,9 @@ const productSchema = new mongoose.Schema({
     },
     id: Number,
 });
+
+// Agrego el Plugin:
+productSchema.plugin(mongoosePaginate);
 
 //Defino el Modelo y lo exporto:
 const ProductModel = mongoose.model("products", productSchema);

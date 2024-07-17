@@ -5,18 +5,15 @@ import ProductModel from "../../models/product.model.js";
 class ProductManager {
     async addProduct({ title, description, price, img, code, stock, category, thumbnails }) {
         try {
-            // Verifica campos obligatorios
             if (!title || !price || !code || !stock || !category) {
                 throw new Error("Todos los campos son obligatorios");
             }
 
-            // Verifica si el código ya existe
             const productExist = await ProductModel.findOne({ code });
             if (productExist) {
                 throw new Error("El código debe ser único");
             }
 
-            // Crea y guarda el nuevo producto
             const newProduct = new ProductModel({
                 title,
                 description,
@@ -35,10 +32,42 @@ class ProductManager {
         }
     }
 
-    async getProducts() {
+    async getProducts({ limit = 10, page = 1, sort, query } = {}) {
         try {
-            const arrayProductos = await ProductModel.find();
-            return arrayProductos;
+            const skip = (page - 1) * limit;
+
+            let queryOptions = {};
+
+            if (query) {
+                queryOptions = { category: query };
+            }
+
+            const sortOptions = {};
+            if (sort) {
+                if (sort === "asc" || sort === "desc") {
+                    sortOptions.price = sort === "asc" ? 1 : -1;
+                }
+            }
+
+            const productos = await ProductModel.find(queryOptions).sort(sortOptions).skip(skip).limit(limit);
+
+            const totalProducts = await ProductModel.countDocuments(queryOptions);
+
+            const totalPages = Math.ceil(totalProducts / limit);
+            const hasPrevPage = page > 1;
+            const hasNextPage = page < totalPages;
+
+            return {
+                docs: productos,
+                totalPages,
+                prevPage: hasPrevPage ? page - 1 : null,
+                nextPage: hasNextPage ? page + 1 : null,
+                page,
+                hasPrevPage,
+                hasNextPage,
+                prevLink: hasPrevPage ? `/api/products?limit=${limit}&page=${page - 1}&sort=${sort}&query=${query}` : null,
+                nextLink: hasNextPage ? `/api/products?limit=${limit}&page=${page + 1}&sort=${sort}&query=${query}` : null,
+            };
         } catch (error) {
             console.log("Error al obtener los productos", error);
             throw error;
