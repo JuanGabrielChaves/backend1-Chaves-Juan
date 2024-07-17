@@ -1,7 +1,7 @@
 /** @format */
 
 import { Router } from "express";
-import ProductManager from "../controllers/productManager.js";
+import ProductManager from "../dao/db/product-manager-db.js";
 
 const router = Router();
 router.get("/realtimeproducts", async (req, res) => {
@@ -13,7 +13,7 @@ router.get("/realtimeproducts", async (req, res) => {
     }
 });
 
-const productManager = new ProductManager("./src/models/products.json");
+const productManager = new ProductManager();
 
 router.get("/", async (req, res) => {
     try {

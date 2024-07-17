@@ -6,7 +6,8 @@ import { Server } from "socket.io";
 import productsRouter from "./routes/products.routes.js";
 import cartsRouter from "./routes/carts.routes.js";
 import viewsRouter from "./routes/views.routes.js";
-import ProductManager from "./controllers/productManager.js";
+import ProductManager from "./dao/db/product-manager-db.js";
+import "./database.js";
 
 const app = express();
 const PUERTO = 8080;
@@ -29,21 +30,21 @@ const httpServer = app.listen(PUERTO, () => {
     console.log(`Servidor escuchando en el http://localhost:${PUERTO}`);
 });
 
-const productManager = new ProductManager("./src/models/products.json");
-const io = new Server(httpServer);
+// const productManager = new ProductManager();
+// const io = new Server(httpServer);
 
-io.on("connection", async (socket) => {
-    console.log("Cliente conectado");
+// io.on("connection", async (socket) => {
+//     console.log("Cliente conectado");
 
-    socket.emit("products", await productManager.getProducts());
+//     socket.emit("products", await productManager.getProducts());
 
-    socket.on("deleteProduct", async (id) => {
-        await productManager.deleteProduct(id);
-        io.sockets.emit("products", await productManager.getProducts());
-    });
+//     socket.on("deleteProduct", async (id) => {
+//         await productManager.deleteProduct(id);
+//         io.sockets.emit("products", await productManager.getProducts());
+//     });
 
-    socket.on("addProduct", async (product) => {
-        await productManager.addProduct(product);
-        io.sockets.emit("products", await productManager.getProducts());
-    });
-});
+//     socket.on("addProduct", async (product) => {
+//         await productManager.addProduct(product);
+//         io.sockets.emit("products", await productManager.getProducts());
+//     });
+// });

@@ -1,0 +1,90 @@
+[
+    {
+        "title": "Mantel de Tusor de 3 x 3",
+        "description": "Mantel de Tusor color gris perla, de 3 x 3 mts",
+        "price": 35000,
+        "img": "Sin Imagen",
+        "code": "mgg1",
+        "stock": 150,
+        "category": "Manteleria",
+        "status": true,
+        "thumbnails": []
+    },
+    {
+        "title": "Repasador de Algodón",
+        "description": "Repasador de algodón blanco, absorbente y resistente",
+        "price": 1200,
+        "img": "Sin Imagen",
+        "code": "rewq1",
+        "stock": 300,
+        "category": "Repasadores",
+        "status": true,
+        "thumbnails": []
+    },
+    {
+        "title": "Servilleta de Tela Blanca",
+        "description": "Servilleta de tela blanca, suave y elegante",
+        "price": 800,
+        "img": "Sin Imagen",
+        "code": "s1gfn",
+        "stock": 500,
+        "category": "Servilletas",
+        "status": true,
+        "thumbnails": []
+    },
+    {
+        "title": "Camino de Mesa Bordado",
+        "description": "Camino de mesa bordado a mano, diseño floral",
+        "price": 10500,
+        "img": "Sin Imagen",
+        "code": "c1hgfe",
+        "stock": 23,
+        "category": "Caminos de Mesa",
+        "status": true,
+        "thumbnails": []
+    },
+    {
+        "title": "Mantel de Tusor de 2 x 2",
+        "description": "Mantel de Tusor color blanco tiza, de 2 x 2 mts",
+        "price": 35000,
+        "img": "Sin Imagen",
+        "code": "m2gfdn3",
+        "stock": 50,
+        "category": "Manteleria",
+        "status": true,
+        "thumbnails": []
+    },
+    {
+        "title": "Repasador cuadrille",
+        "description": "Repasador cuadrille",
+        "price": 5900,
+        "img": "Sin Imagen",
+        "code": "r21765",
+        "stock": 300,
+        "category": "Repasadores",
+        "status": true,
+        "thumbnails": []
+    },
+    {
+        "title": "Pack de Servilletas de Tela Blanca",
+        "description": "Pack por 3 Servilleta de tela blanca, suave y elegante",
+        "price": 20000,
+        "img": "Sin Imagen",
+        "code": "sx3987",
+        "stock": 100,
+        "category": "Servilletas",
+        "status": true,
+        "thumbnails": []
+    },
+    {
+        "title": "Pack de repasadores cuadrille",
+        "description": "Pack de 3 repasadores cuadrille",
+        "price": 15000,
+        "img": "Sin Imagen",
+        "code": "pkx0983",
+        "stock": 25,
+        "category": "Repasadores",
+        "status": true,
+        "thumbnails": []
+    }
+]
