@@ -1,4 +1,4 @@
-<div class="container-fluid">
+{{!-- <div class="container">
     <div class="row">
         {{#each productos}}
             <div class="col-md-4">
@@ -14,9 +14,23 @@
             </div>
         {{/each}}
     </div>
-</div>
-<div class="botonera">
+</div> --}}
 
+<div class="card-deck">
+    {{#each productos}}
+        <div class="card">
+            <img src="{{img}}" class="card-img-top" alt="Imagen del producto" />
+            <div class="card-body">
+                <h3 class="card-title">{{title}}</h3>
+                <h4>{{description}}</h4>
+                <h4 class="card-text">Categoría: {{category}}</h4>
+                <h4 class="card-text"> $ {{price}}</h4>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+<div class="botonera">
     {{#if hasPrevPage}}
         <button>
             <a href="/products?page={{prevPage}}"> Anterior </a>
