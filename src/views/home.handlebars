@@ -1,4 +1,13 @@
-<h1>Todos los productos</h1>
+<header>
+    <h1>Todos los productos</h1>
+    <div>
+        <p>Bienvenido, {{user.first_name}} - {{user.last_name}}!! </p>
+        <p>E-mail: {{user.email}} </p>
+        <p>Edad: {{user.age}} </p>
+        <p>Rol: {{user.role}} </p>
+        <a href="/api/sessions/logout"> Cerrar Sesión </a>
+    </div>
+</header>
 
 <div class="productsContainer">
     {{#each products}}
