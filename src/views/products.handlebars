@@ -1,14 +1,16 @@
+<style>
+    header { text-align: center; } .title { text-align: center; } button {display: flex; margin: auto; background-color: #0e71db; color: white; border: none; padding: 12px 20px; text-align: center; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease; margin-top: 10px; } button:hover { background-color: #0f4680; } a:hover { background-color: #0f4680; } a{text-decoration: none; color: aliceblue;}
+</style>
 <header>
-    <h1>Todos los productos</h1>
     <div>
-        <p>Te damos la bienvenida, {{user.first_name}} - {{user.last_name}}!! </p>
-        <p>E-mail: {{user.email}} </p>
-        <p>Edad: {{user.age}} </p>
-        <p>Rol: {{user.role}} </p>
-        <a href="/api/sessions/logout"> Cerrar Sesión </a>
+        <h2>Te damos la bienvenida, {{user.first_name}} - {{user.last_name}}!! </h2>
+        <p><strong>E-mail: </strong> {{user.email}} </p>
+        <p><strong>Edad: </strong> {{user.age}} </p>
+        <p><strong>Rol: </strong> {{user.role}} </p>
+        <button><a href="/api/sessions/logout"> Cerrar Sesión </a></button>
     </div>
 </header>
-
+<h1 class="title">Todos los productos</h1>
 <div class="card-deck">
     {{#each productos}}
         <div class="card">
@@ -36,7 +38,7 @@
 
     {{/if}}
     <div>
-        <p>Página {{currentPage}} de {{totalPages}} </p>
+        <p><strong>Página </strong> {{currentPage}} <strong>de </strong> {{totalPages}} </p>
     </div>
 
 </div>
