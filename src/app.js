@@ -23,7 +23,6 @@ const PUERTO = 8080;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("./src/public"));
-
 app.use(cookieParser());
 
 app.use(
@@ -32,7 +31,7 @@ app.use(
         resave: true,
         saveUninitialized: true,
         store: MongoStore.create({
-            mongoUrl: "mongodb+srv://aburoxana:917325@cluster0.wvf05f6.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0",
+            mongoUrl: "mongodb+srv://achavesjg:inicio123*@cluster0.vwke0vh.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0",
         }),
     })
 );
@@ -57,11 +56,10 @@ const httpServer = app.listen(PUERTO, () => {
 });
 
 const productManager = new ProductManager();
-const io = new Server(httpServer);
 
+const io = new Server(httpServer);
 io.on("connection", async (socket) => {
     console.log("Cliente conectado");
-
     socket.emit("products", await productManager.getProducts());
 
     socket.on("deleteProduct", async (id) => {

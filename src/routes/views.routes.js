@@ -8,11 +8,8 @@ import jwt from "jsonwebtoken";
 const router = Router();
 const productManager = new ProductManager();
 const cartManager = new CartManager();
-
-// Clave secreta para JWT
 const JWT_SECRET = "coderhouse";
 
-// Middleware para verificar JWT
 function authenticateJWT(req, res, next) {
     const token = req.cookies["coderCookieToken"];
     if (!token) {
@@ -73,7 +70,6 @@ router.get("/carts/:cid", authenticateJWT, async (req, res) => {
 
         const productosEnCarrito = carrito.products.map((item) => ({
             product: item.product.toObject(),
-            //Lo convertimos a objeto para pasar las restricciones de Exp Handlebars.
             quantity: item.quantity,
         }));
 
@@ -87,7 +83,7 @@ router.get("/carts/:cid", authenticateJWT, async (req, res) => {
 router.get("/login", (req, res) => {
     const token = req.cookies["coderCookieToken"];
     if (token) {
-        return res.redirect("/productos");
+        return res.redirect("/products");
     }
     res.render("login");
 });
@@ -95,7 +91,7 @@ router.get("/login", (req, res) => {
 router.get("/register", (req, res) => {
     const token = req.cookies["coderCookieToken"];
     if (token) {
-        return res.redirect("/productos");
+        return res.redirect("/products");
     }
     res.render("register");
 });
