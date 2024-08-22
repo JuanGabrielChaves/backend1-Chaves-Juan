@@ -1,20 +1,13 @@
-{{!-- <div class="container">
-    <div class="row">
-        {{#each productos}}
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="{{img}}" class="card-img-top" alt="Imagen del producto" />
-                    <div class="card-body">
-                        <h3 class="card-title">{{title}}</h3>
-                        <h4>{{description}}</h4>
-                        <p class="card-text">{{category}}</p>
-                        <p class="card-text"><small class="text-muted">$ {{price}}</small></p>
-                    </div>
-                </div>
-            </div>
-        {{/each}}
+<header>
+    <h1>Todos los productos</h1>
+    <div>
+        <p>Te damos la bienvenida, {{user.first_name}} - {{user.last_name}}!! </p>
+        <p>E-mail: {{user.email}} </p>
+        <p>Edad: {{user.age}} </p>
+        <p>Rol: {{user.role}} </p>
+        <a href="/api/sessions/logout"> Cerrar Sesión </a>
     </div>
-</div> --}}
+</header>
 
 <div class="card-deck">
     {{#each productos}}

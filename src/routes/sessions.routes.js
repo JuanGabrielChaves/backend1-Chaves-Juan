@@ -34,7 +34,7 @@ router.post("/register", async (req, res) => {
 
         await newUser.save();
 
-        const token = jwt.sign({ email: newUser.email, role: newUser.role }, JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ first_name: newUser.first_name, last_name: newUser.last_name, age: newUser.age, email: newUser.email, role: newUser.role }, JWT_SECRET, { expiresIn: "1h" });
 
         res.cookie("coderCookieToken", token, {
             maxAge: 3600000,
@@ -61,7 +61,7 @@ router.post("/login", async (req, res) => {
             return res.status(401).send("Contraseña incorrecta");
         }
 
-        const token = jwt.sign({ email: userEncontrado.email, role: userEncontrado.role }, JWT_SECRET, { expiresIn: "1h" });
+        const token = jwt.sign({ first_name: userEncontrado.first_name, last_name: userEncontrado.last_name, age: userEncontrado.age, email: userEncontrado.email, role: userEncontrado.role }, JWT_SECRET, { expiresIn: "1h" });
 
         res.cookie("coderCookieToken", token, {
             maxAge: 3600000,
