@@ -4,12 +4,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Productos</title>
         <style>
-            header { text-align: center; } .title { text-align: center; } button { display: flex; margin: auto; background-color: #0e71db; color: white; border: none; padding: 12px 20px; text-align: center; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease; margin-top: 10px; } button:hover { background-color: #0f4680; } a:hover { background-color: #0f4680; } a { text-decoration: none; color: aliceblue; } .card { position: relative; } .add-to-cart { position: absolute;
+            header { text-align: center; } .title { text-align: center; } button { display: flex; margin: auto; background-color: #0e71db; color: white; border: none; padding: 12px 20px; text-align: center; border-radius: 4px; cursor: pointer; transition: b>ackground-color 0.3s ease; margin-top: 10px; } button:hover { background-color: #0f4680; } a:hover { background-color: #0f4680; } a { text-decoration: none; color: aliceblue; } .card { position: relative; } .add-to-cart { position: absolute;
             bottom: 10px; right: 10px; background-color: #0e71db; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease; } .add-to-cart:hover { background-color: #0f4680; } .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4); } .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px;
             border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 10px; } .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; } .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; } .modal-header { font-size: 24px; margin-bottom: 20px; } .modal-body { margin-bottom: 20px; } .modal-footer { text-align: right; }
         </style>
     </head>
     <body>
+        <a href="/listCarts" style="background-color: #0e71db; padding:5px;">Ver Carritos</a>
         <h1 class="title">Todos los productos</h1>
         <input type="hidden" id="carritoId" value="{{cartId}}" />
         <div class="card-deck">
