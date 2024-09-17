@@ -1,10 +1,11 @@
+/** @format */
+
 import express from "express";
 const router = express.Router();
 import CartManager from "../dao/db/cart-manager-db.js";
 const cartManager = new CartManager();
 import CartModel from "../dao/models/cart.model.js";
-import CartController from "../controllers/cart.controller.js"
- 
+import CartController from "../controllers/cart.controller.js";
 
 // Crear un nuevo carrito
 router.post("/", CartController.createCart);
@@ -54,36 +55,32 @@ router.get("/:cid/purchase", async (req, res) => {
             }
         }
 
-        //¿A quien le pertenece este carrito? Porque yo necesito los datos del usuario para hacer el ticket. 
-
-        const usuarioDelCarrito = await UsuarioModel.findOne({cart: carritoId});
+        const usuarioDelCarrito = await UsuarioModel.findOne({ cart: carritoId });
 
         const ticket = new TicketModel({
-            purchase_datetime: new Date(), 
+            purchase_datetime: new Date(),
             amount: calcularTotal(carrito.products),
-            purchaser: usuarioDelCarrito.email
-        })
+            purchaser: usuarioDelCarrito.email,
+        });
 
-        await ticket.save(); 
+        await ticket.save();
 
-        carrito.products = carrito.products.filter(item => productosNoDisponibles.some(productoId => productoId.equals(item.product))); 
+        carrito.products = carrito.products.filter((item) => productosNoDisponibles.some((productoId) => productoId.equals(item.product)));
 
-        await carrito.save(); 
+        await carrito.save();
 
-        //Testeamos con Postman: 
         res.json({
             message: "Compra generada",
             ticket: {
                 id: ticket._id,
                 amount: ticket.amount,
-                purchaser: ticket.purchaser
-            }, 
-            productosNoDisponibles
-        })
-
+                purchaser: ticket.purchaser,
+            },
+            productosNoDisponibles,
+        });
     } catch (error) {
         res.status(500).send("error fatal super mortal");
     }
-})
+});
 
 export default router;
