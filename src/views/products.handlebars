@@ -1,44 +1,69 @@
-<style>
-    header { text-align: center; } .title { text-align: center; } button {display: flex; margin: auto; background-color: #0e71db; color: white; border: none; padding: 12px 20px; text-align: center; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease; margin-top: 10px; } button:hover { background-color: #0f4680; } a:hover { background-color: #0f4680; } a{text-decoration: none; color: aliceblue;}
-</style>
-<header>
-    <div>
-        <h2>Te damos la bienvenida, {{user.first_name}} - {{user.last_name}}!! </h2>
-        <p><strong>E-mail: </strong> {{user.email}} </p>
-        <p><strong>Edad: </strong> {{user.age}} </p>
-        <p><strong>Rol: </strong> {{user.role}} </p>
-        <button><a href="/api/sessions/logout"> Cerrar Sesión </a></button>
-    </div>
-</header>
-<h1 class="title">Todos los productos</h1>
-<div class="card-deck">
-    {{#each productos}}
-        <div class="card">
-            <img src="{{img}}" class="card-img-top" alt="Imagen del producto" />
-            <div class="card-body">
-                <h3 class="card-title">{{title}}</h3>
-                <h4>{{description}}</h4>
-                <h4 class="card-text">Categoría: {{category}}</h4>
-                <h4 class="card-text"> $ {{price}}</h4>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Productos</title>
+        <style>
+            header { text-align: center; } .title { text-align: center; } button { display: flex; margin: auto; background-color: #0e71db; color: white; border: none; padding: 12px 20px; text-align: center; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease; margin-top: 10px; } button:hover { background-color: #0f4680; } a:hover { background-color: #0f4680; } a { text-decoration: none; color: aliceblue; } .card { position: relative; } .add-to-cart { position: absolute;
+            bottom: 10px; right: 10px; background-color: #0e71db; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; transition: background-color 0.3s ease; } .add-to-cart:hover { background-color: #0f4680; } .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4); } .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px;
+            border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 10px; } .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; } .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; } .modal-header { font-size: 24px; margin-bottom: 20px; } .modal-body { margin-bottom: 20px; } .modal-footer { text-align: right; }
+        </style>
+    </head>
+    <body>
+        <h1 class="title">Todos los productos</h1>
+        <input type="hidden" id="carritoId" value="{{cartId}}" />
+        <div class="card-deck">
+            {{#each productos}}
+                <div class="card">
+                    <img src="{{img}}" class="card-img-top" alt="Imagen del producto" />
+                    <div class="card-body">
+                        <h3 class="card-title">{{title}}</h3>
+                        <h6 hidden class="card-title">{{_id}}</h6>
+                        <h4>{{description}}</h4>
+                        <h4 class="card-text">Categoría: {{category}}</h4>
+                        <h4 class="card-text"> $ {{price}}</h4>
+                        <button class="add-to-cart" onclick="openModal('{{_id}}')">Agregar al carrito</button>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+        <div class="botonera">
+            {{#if hasPrevPage}}
+                <button>
+                    <a href="/products?page={{prevPage}}"> Anterior </a>
+                </button>
+            {{/if}}
+            {{#if hasNextPage}}
+                <button>
+                    <a href="/products?page={{nextPage}}"> Siguiente </a>
+                </button>
+            {{/if}}
+            <div>
+                <p><strong>Página </strong> {{currentPage}} <strong>de </strong> {{totalPages}} </p>
             </div>
         </div>
-    {{/each}}
-</div>
 
-<div class="botonera">
-    {{#if hasPrevPage}}
-        <button>
-            <a href="/products?page={{prevPage}}"> Anterior </a>
-        </button>
-    {{/if}}
-    {{#if hasNextPage}}
-        <button>
-            <a href="/products?page={{nextPage}}"> Siguiente </a>
-        </button>
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">×</span>
+                <div class="modal-header">Agregar productos al carrito</div>
+                <div class="modal-body">
+                    <input type="hidden" id="productId" />
+                    <label for="cantidad">Cantidad:</label>
+                    <input type="number" class="form-control" placeholder="Ingrese la cantidad" id="cantidad" name="cantidad" min="1" />
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" onclick="addToCart()">Agregar</button>
+                </div>
+            </div>
+        </div>
 
-    {{/if}}
-    <div>
-        <p><strong>Página </strong> {{currentPage}} <strong>de </strong> {{totalPages}} </p>
-    </div>
-
-</div>
+        <script>
+            function openModal(productId) { document.getElementById('productId').value = productId; document.getElementById("myModal").style.display = "block"; } function closeModal() { document.getElementById("myModal").style.display = "none"; } async function addToCart() { const productId = document.getElementById('productId').value; const carritoId = document.getElementById('carritoId').value; const cantidad = document.getElementById('cantidad').value; try { const response = await
+            fetch(`/api/carts/${carritoId}/product/${productId}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ quantity: cantidad }) }); const result = await response.json(); if (response.ok) { alert('Producto agregado al carrito exitosamente'); closeModal(); } else { alert(result.error || 'Error al agregar el producto al carrito'); } } catch (error) { console.error('Error:', error); alert('Error al agregar el producto al carrito'); } } window.onclick
+            = function(event) { if (event.target == document.getElementById("myModal")) { closeModal(); } }
+        </script>
+    </body>
+</html>
